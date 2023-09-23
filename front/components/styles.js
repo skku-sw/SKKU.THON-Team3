@@ -12,8 +12,11 @@ export const Colors = {
     red: "#EF4444",  // 수정된 색상 코드
     black: "#000001",
     deepblue : "#000080",
+    main : "#FCA34D",
+    secondmain : "#FFC68E",
+    thirdmain : "#FFB874"
 };
-const { primary,secondary,tertiary,darkLight,brand,green,red,black,deepblue} = Colors;
+const { thirdmain, secondmain, main,primary,secondary,tertiary,darkLight,brand,green,red,black,deepblue} = Colors;
 
 //Splash Screen
 export const MainContainer = styled.View`
@@ -31,7 +34,7 @@ export const TitleContainer = styled.View`
 
 export const AppNameText = styled.Text`
     font-family: Pretendard-Bold;
-    font-size: 18px;
+    font-size: 20px;
     line-height: 30px; 
     text-align: center;
     font-style: normal;
@@ -89,10 +92,10 @@ export const LoginTitleContainer = styled.View`
 export const LoginTitleText = styled.Text`
     
     font-family: Pretendard-Bold;
-    font-size: 32px;
+    font-size: 48px;
     text-align: left;
     font-style: normal;
-    color : ${black};
+    color : ${secondmain};
 
 `
 export const LoginSubTitleText = styled.Text`
@@ -146,16 +149,16 @@ export const LoginBelowImageContainer = styled.View`
     width : 24px;
     height : 24px;
     border-radius : 8px;
-    background-color : #E6E1FF;
+    background-color : #FFD7B0;
 `
 
 export const ButtonContainer = styled.TouchableOpacity`
     border-radius : 8px;
     align-items: center;
     justify-content : center;
-    width : 70%;
+    width : 90%;
     height : 60px;
-    background-color : #130160;
+    background-color : ${thirdmain};
 `
 
 export const WhiteButtonText = styled.Text`
@@ -491,7 +494,7 @@ export const ApplyButton = styled.TouchableOpacity`
     
     padding: 4px;
     width: 80px;
-    background-color: #FF6B2C;
+    background-color: ${main};
     justify-content: center;
     align-items: center;
     margin-left : auto;
@@ -594,15 +597,15 @@ export const DetailRequireContainer = styled.View`
 export const DetailSubtileText = styled.Text`
     color: #0D0140;
     font-size: 16px;
-    font-family: Pretendard-Bold;
+    font-family: Pretendard-Regular;
     margin-top: 5px; 
 `
 export const DetailApplyButton = styled.TouchableOpacity`
     width:90%;
-    background-color: ${brand};
+    background-color: ${main};
     justify-content: center;
     align-items: center;
-    border-radius: 5px;
+    border-radius: 10px;
     margin-vertical: 30px;
     height: 60px;
 `;

@@ -5,7 +5,7 @@ import * as Font from 'expo-font';
 import { useEffect, useState } from 'react';
 import SplashScreen from './screens/SplashScreen';
 import FilterScreen from './screens/Main/FilterScreen';
-
+import { UserContext } from './UserContext';
 import "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -14,9 +14,10 @@ import SignUpScreen from './screens/SignUpScreen';
 import MainScreen from './screens/MainScreen';
 import DetailScreen from './screens/Main/DetailScreen';
 import MyPageScreen from './screens/Main/MyPageScreen';
-import ResumeScreen from './screens/ResumeScreen';
+import ResumeScreen from './screens/ResumeScreen'; 
 export default function App() {
   const [isFontLoaded, setIsFontLoaded] = useState(false);
+  const [user, setUser] = useState("cowcow");
   useEffect(() => {
     const loadFonts = async () => {
         try {
@@ -46,6 +47,7 @@ export default function App() {
   }
   const Stack = createStackNavigator();
   return (
+    <UserContext.Provider value={{ user, setUser }}>
     <NavigationContainer>
     <Stack.Navigator initialRouteName="SplashScreen" screenOptions={{ headerShown: false }}>
       <Stack.Screen name="SplashScreen" component={SplashScreen} />
@@ -57,6 +59,7 @@ export default function App() {
       <Stack.Screen name="ResumeScreen" component={ResumeScreen} />
     </Stack.Navigator>
   </NavigationContainer>
+  </UserContext.Provider>
   );
 }
 

@@ -66,8 +66,8 @@ const SignUpScreen = ({ navigation }) => {
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <MainContainer>
         <LoginTitleContainer style={{marginTop : 64}}>
-          <LoginTitleText>Create an Account</LoginTitleText>
-          <LoginSubTitleText>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</LoginSubTitleText>
+          <LoginTitleText>회원가입</LoginTitleText>
+          <LoginSubTitleText>모두함꼐, 서로 함께, 이롭게, 모서리와 함께 일자리를 찾아볼까요?</LoginSubTitleText>
         </LoginTitleContainer>
 
         <InputContainer style={{ marginTop: 32 }}>

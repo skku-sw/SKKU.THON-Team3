@@ -233,7 +233,7 @@ module.exports = (db) => {
   // GET 요청 처리 (모든 게시물 가져오기 및 북마크 정보 포함)
   router.get('/', (req, res) => {
     const userNickname = req.query.nickname; // 로그인한 사용자의 닉네임
-
+    console.log(userNickname);
     // 1. 해당 사용자가 북마크한 게시물 목록 조회
     const getUserBookmarksQuery = 'SELECT post_id FROM bookmark WHERE user_nickname = ?';
     db.query(getUserBookmarksQuery, [userNickname], (err, bookmarkResults) => {
