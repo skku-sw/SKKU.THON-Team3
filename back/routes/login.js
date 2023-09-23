@@ -8,8 +8,8 @@ module.exports = (db) => {
 
         // MySQL 쿼리를 사용하여 회원가입 정보 저장
         db.query(
-          'INSERT INTO users (nickname, username, password, sex, category) VALUES (?, ?, ?, ?, ?)',
-          [nickname, username, password, sex, category],
+          'INSERT INTO users (nickname, username, password, sex, category, age, phone_number) VALUES (?, ?, ?, ?, ?, ? ,?)',
+          [nickname, username, password, sex, category, age, phone_number],
           (err, results) => {
             if (err) {
               console.error('쿼리 실행 오류:', err);

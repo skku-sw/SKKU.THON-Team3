@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const cors = require('cors'); // cors 미들웨어 추가
 const mysql = require('mysql');
 require('dotenv').config();
 const bodyParser = require('body-parser');
@@ -30,7 +31,8 @@ db.connect((err) => {
     console.log('MySQL 데이터베이스에 연결되었습니다.');
   }
 });
-
+// CORS 설정
+app.use(cors());
 // body-parser 미들웨어 등록
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -38,7 +40,7 @@ console.log("app.js")
 app.use('/login', require('./routes/login')(db));
 app.use('/board', require('./routes/board')(db));
 app.use('/posts', require('./routes/posts')(db));
-// app.use('/map', require('./routes/map'));
+app.use('/map', require('./routes/map')(db));
 // app.use('/chat', require('./routes/chat'));
 app.use('/myPage', require('./routes/myPage')(db));
 
