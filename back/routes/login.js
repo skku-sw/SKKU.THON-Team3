@@ -4,18 +4,35 @@ const router = express.Router();
 module.exports = (db) => {
     // POST 요청 처리 (회원가입)
     router.post('/join', (req, res) => {
-        const { nickname, username, password, sex, category } = req.body;
+        const { nickname, username, password, sex, category, age, phone_number } = req.body;
 
         // MySQL 쿼리를 사용하여 회원가입 정보 저장
-        db.query('INSERT INTO users (nickname, username, password, sex, category) VALUES (?, ?, ?, ?, ?)', [nickname, username, password, sex, category], (err, results) => {
+        db.query(
+          'INSERT INTO users (nickname, username, password, sex, category) VALUES (?, ?, ?, ?, ?)',
+          [nickname, username, password, sex, category],
+          (err, results) => {
             if (err) {
-                console.error('쿼리 실행 오류:', err);
-                res.status(500).send('회원가입 실패');
+              console.error('쿼리 실행 오류:', err);
+              res.status(500).send('회원가입 실패');
             } else {
-                // 회원가입 성공
-                res.status(200).send('회원가입 성공');
+              // 회원가입 성공
+              // 이제 resume 테이블에도 데이터 추가
+              db.query(
+                'INSERT INTO resume (nickname, username, sex, category, age, phone_number) VALUES (?, ?, ?, ?, ?, ?)',
+                [nickname, username, sex, category, age, phone_number],
+                (err, results) => {
+                  if (err) {
+                    console.error('쿼리 실행 오류:', err);
+                    res.status(500).send('회원가입 실패');
+                  } else {
+                    // resume 테이블에도 데이터 추가 성공
+                    res.status(200).send('회원가입 및 이력서 작성 성공');
+                  }
+                }
+              );
             }
-        });
+          }
+        );
     });
 
     // POST 요청 처리 (로그인)
