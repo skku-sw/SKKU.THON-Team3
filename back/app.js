@@ -43,11 +43,10 @@ app.get('/', (req, res) => {
 // app.use('/', require('./routes/login'));
 app.use('/login', require('./routes/login')(db));
 app.use('/posts', require('./routes/posts')(db));
-// console.log("app.js")
-// app.use('/board', require('./routes/board'));
+app.use('/board', require('./routes/board')(db));
 // app.use('/map', require('./routes/map'));
 // app.use('/chat', require('./routes/chat'));
-// app.use('/myPage', require('./routes/myPage'));
+app.use('/mypage', require('./routes/mypage')(db));
 
 // 사용자 정보 가져오기
 app.get('/users', (req, res) => {
