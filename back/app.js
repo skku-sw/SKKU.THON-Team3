@@ -20,7 +20,7 @@ const db = mysql.createConnection({
   database : dbDatabase
 });
 
-console.log(dbHost, dbUser, dbPassword, dbDatabase)
+// console.log(dbHost, dbUser, dbPassword, dbDatabase)
 
 // MySQL 연결
 db.connect((err) => {
@@ -42,7 +42,8 @@ app.get('/', (req, res) => {
 
 // app.use('/', require('./routes/login'));
 app.use('/login', require('./routes/login')(db));
-console.log("app.js")
+app.use('/posts', require('./routes/posts')(db));
+// console.log("app.js")
 // app.use('/board', require('./routes/board'));
 // app.use('/map', require('./routes/map'));
 // app.use('/chat', require('./routes/chat'));
@@ -63,5 +64,5 @@ app.get('/users', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`App listening on port ${port}`)
 })
