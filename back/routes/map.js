@@ -23,7 +23,7 @@ module.exports = (db) => {
   //add mark
   router.post('/mark/add', (req, res) => {
     var requestBody = req.body;
-    db.query(`INSERT INTO coordinate (post_id, address, latitude, longitude) VALUES (?, ?, ?)`, [requestBody.post_id, requestBody.address, requestBody.latitude, requestBody.longitude], (err, results) => {
+    db.query(`INSERT INTO coordinate (post_id, address, latitude, longitude) VALUES (?, ?, ?, ?)`, [requestBody.post_id, requestBody.address, requestBody.latitude, requestBody.longitude], (err, results) => {
       if(err){
         console.error('쿼리 실행 오류:', err);
         res.status(500).send('마커 추가 실패');
