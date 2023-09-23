@@ -49,9 +49,9 @@
 
 ## Dev Server 실행 방법
 1. git clone을 받아줍니다
-```
-git clone https://github.com/skku-sw/SKKU.THON-Team3.git
-```
+  ```
+  git clone https://github.com/skku-sw/SKKU.THON-Team3.git
+  ```
 2. back directory안에서 dependency를 관리해주고 필요한 package들을 설치해주기 위한 명령어를 입력합니다.
    ```
    npm install
