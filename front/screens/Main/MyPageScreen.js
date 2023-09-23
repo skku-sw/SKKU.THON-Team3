@@ -19,7 +19,7 @@ const MyPageScreen = ({ navigation }) => {
 
   const handleEditResume = () => {
     console.log("RR");
-    navigation.navigate("../ResumeScreen");
+    navigation.navigate("ResumeScreen");
     
   };
 
@@ -61,7 +61,7 @@ const MyPageScreen = ({ navigation }) => {
 
       <TouchableOpacity onPress={handleAccountInfo}>
         <ButtonStyled style={{marginTop : 52}}>
-        <View style={{ flexDirection: 'row', alignItems: 'center'  }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center'  }}>
             <Icon name = "people-outline" size = {30} color="white"/>
             <ButtonText>     계정 정보</ButtonText>
           </View>
@@ -69,8 +69,8 @@ const MyPageScreen = ({ navigation }) => {
       </TouchableOpacity>
 
       <TouchableOpacity onPress={handleFavorites}>
-      <ButtonStyled>
-        <View style={{ flexDirection: 'row', alignItems: 'center'}}>
+        <ButtonStyled>
+          <View style={{ flexDirection: 'row', alignItems: 'center'}}>
             <Icon name = "bookmark-outline" size = {30} color="white"/>
             <ButtonText>     관심 기업</ButtonText>
           </View>
@@ -78,8 +78,8 @@ const MyPageScreen = ({ navigation }) => {
       </TouchableOpacity>
 
       <TouchableOpacity onPress={handleEditResume}>
-      <ButtonStyled>
-        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+        <ButtonStyled>
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
             <Icon name = "document-text-outline" size = {30} color="white"/>
             <ButtonText>     이력서 수정</ButtonText>
           </View>
@@ -87,17 +87,17 @@ const MyPageScreen = ({ navigation }) => {
       </TouchableOpacity>
 
       <TouchableOpacity onPress={handleCheckApplications}>
-      <ButtonStyled>
-        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-        <Icon name = "contract-outline" size = {30} color="white"/>
+        <ButtonStyled>
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <Icon name = "contract-outline" size = {30} color="white"/>
             <ButtonText>     근로계약서</ButtonText>
           </View>
         </ButtonStyled>
       </TouchableOpacity>
 
       <TouchableOpacity onPress={handleLogout}>
-      <ButtonStyled>
-        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+        <ButtonStyled>
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
             <Icon name = "log-out-outline" size = {30} color="white"/>
             <ButtonText>     로그아웃</ButtonText>
           </View>
