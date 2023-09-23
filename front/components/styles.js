@@ -264,6 +264,12 @@ font-size: 16px;
 vertical-align: middle;
 `;
 
+export const BB = styled.Text`
+    color: ${black};
+    font-family: Pretendard-Regular;
+    font-size: 20px;
+    letter-spacing: 8px;
+    `;    
 
 
 
@@ -606,3 +612,4 @@ export const DetailApplyButton = styled.TouchableOpacity`
     margin-vertical: 30px;
     height: 60px;
 `;
+

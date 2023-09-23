@@ -6,6 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 
 
 const MyPageScreen = ({ navigation }) => {
+
    
   const handleAccountInfo = () => {
     // 계정 정보 버튼을 눌렀을 때 수행할 작업을 여기에 추가
@@ -77,8 +78,8 @@ const MyPageScreen = ({ navigation }) => {
         </ButtonStyled>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={handleEditResume}>
-        <ButtonStyled>
+      <TouchableOpacity>
+        <ButtonStyled onPress={handleEditResume}>
           <View style={{ flexDirection: 'row', alignItems: 'center' }}>
             <Icon name = "document-text-outline" size = {30} color="white"/>
             <ButtonText>     이력서 수정</ButtonText>
