@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "expo-constants": "^14.4.2",
+    "styled-components": "^6.0.8"
+  }
+}

@@ -5,6 +5,11 @@ import * as Font from 'expo-font';
 import { useEffect, useState } from 'react';
 import SplashScreen from './screens/SplashScreen';
 import MyPageScreen from './screens/MyPageScreen';
+import ResumeScreen from './screens/ResumeScreen';
+import "react-native-gesture-handler";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import LoginScreen from './screens/LoginScreen';
 
 export default function App() {
   const [isFontLoaded, setIsFontLoaded] = useState(false);
@@ -35,8 +40,9 @@ export default function App() {
   if (!isFontLoaded) {
     return null; // 폰트가 로드되지 않았을 때는 아무것도 렌더링하지 않습니다.
   }
+  const Stack = createStackNavigator();
   return (
-    <MyPageScreen></MyPageScreen>
+    <ResumeScreen></ResumeScreen>
   );
 }
 
