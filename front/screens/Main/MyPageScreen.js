@@ -19,7 +19,7 @@ const MyPageScreen = ({ navigation }) => {
 
   const handleEditResume = () => {
     console.log("RR");
-    navigation.navigate("ResumeScreen");
+    navigation.navigate("../ResumeScreen");
     
   };
 
