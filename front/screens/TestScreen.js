@@ -2,7 +2,7 @@ import React from 'react';
 import {Text} from 'react-native';
 const TestScreen = () => {
     return (
-        <Text>TEST</Text>
+        <Text>TEsdfsST</Text>
     );
 };
 
