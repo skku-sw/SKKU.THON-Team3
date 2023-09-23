@@ -2,7 +2,9 @@ const express = require('express')
 const app = express()
 const mysql = require('mysql');
 require('dotenv').config();
+const bodyParser = require('body-parser');
 const port = 3000
+app.use(express.json());
 
 // 환경 변수 사용 예제
 const dbHost = process.env.DB_HOST;
@@ -29,6 +31,9 @@ db.connect((err) => {
   }
 });
 
+// body-parser 미들웨어 등록
+app.use(bodyParser.urlencoded({ extended: true }));
+
 // 라우팅 및 미들웨어 설정
 app.get('/', (req, res) => {
   // 여기에서 데이터베이스 쿼리 실행 등을 처리
@@ -36,7 +41,8 @@ app.get('/', (req, res) => {
 });
 
 // app.use('/', require('./routes/login'));
-app.use('/', require('./routes/posts'));
+app.use('/login', require('./routes/login')(db));
+console.log("app.js")
 // app.use('/board', require('./routes/board'));
 // app.use('/map', require('./routes/map'));
 // app.use('/chat', require('./routes/chat'));
