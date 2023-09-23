@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 
 
-const MyPageScreen = () => {
+const MyPageScreen = ({ navigation }) => {
    
   const handleAccountInfo = () => {
     // 계정 정보 버튼을 눌렀을 때 수행할 작업을 여기에 추가
@@ -18,14 +18,16 @@ const MyPageScreen = () => {
   };
 
   const handleEditResume = () => {
-    // 이력서 수정 버튼을 눌렀을 때 수행할 작업을 여기에 추가
+    console.log("RR");
+    navigation.navigate("ResumeScreen");
     
   };
 
   const handleCheckApplications = () => {
-    // 내 신청 현황 확인 버튼을 눌렀을 때 수행할 작업을 여기에 추가
+    
     console.log('내 지원 현황 확인 버튼 클릭');
   };
+
 
   const handleLogout = () => {
     // 로그아웃 버튼을 눌렀을 때 수행할 작업을 여기에 추가
