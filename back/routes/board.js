@@ -73,7 +73,12 @@ module.exports = (db) => {
             res.status(500).send('게시글 작성 실패');
             } else {    
             // 결과 처리
-            res.status(200).send('게시글 작성 성공');
+            const responseJSON = {
+                title: requestData.title,
+                content: requestData.content,
+                nickname: requestData.nickname
+            };
+            res.status(200).json(responseJSON);
             }
         });
     });
