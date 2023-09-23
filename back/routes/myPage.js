@@ -20,7 +20,7 @@ module.exports = (db) => {
   //이력서 조회
   router.post('/resume', (req, res) => {
     const requestData = req.body;
-    db.query('SELECT * FROM resume WHERE user_nickname = ?', [requestData.nickname], (err, results) => {
+    db.query('SELECT * FROM resume WHERE nickname = ?', [requestData.nickname], (err, results) => {
       if(err){
         console.error('쿼리 실행 오류:', err);
         res.status(500).send('이력서 조회 실패');
