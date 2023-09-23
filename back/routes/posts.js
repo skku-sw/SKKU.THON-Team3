@@ -30,6 +30,37 @@ module.exports = (db) => {
     });
   });
 
+  // GET /posts/tag/:tag 엔드포인트
+  router.get('/tag/:tag', (req, res) => {
+    const tag = req.params.tag; // 요청에서 태그 파라미터 추출
+
+    // "posts" 테이블에서 해당 태그를 포함하는 게시물을 가져오는 쿼리 작성
+    // % 기호를 사용하여 해당 태그가 어디에든 포함된 게시물을 검색
+    const query = `
+      SELECT posts.*, COUNT(apply.apply_id) AS num_applicants
+      FROM posts
+      LEFT JOIN apply ON posts.id = apply.post_id
+      WHERE posts.tag LIKE ?
+      GROUP BY posts.id
+    `;
+
+    // 데이터베이스에서 게시물을 조회
+    db.query(query, [`%${tag}%`], (err, results) => {
+      if (err) {
+        console.error('쿼리 실행 오류:', err);
+        res.status(500).send('데이터베이스 오류');
+      } else {
+        // 결과를 JSON 형식으로 응답
+        if(results.length > 0) {
+          res.status(200).json(results);
+        }
+        else{
+          res.status(400).send('검색된 결과가 없습니다.');
+        }
+      }
+    });
+  });
+
   // GET 요청 처리 (모든 게시물 가져오기)
   router.get('/', (req, res) => {
     // 게시물과 지원 테이블을 조인하고 COUNT를 사용하여 지원자 수 계산
@@ -51,6 +82,8 @@ module.exports = (db) => {
       }
     });
   });
+
+  
 
   // POST 요청 처리 (게시물 추가)
   // router.post('/', (req, res) => {
