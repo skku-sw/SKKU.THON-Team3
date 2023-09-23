@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity } from 'react-native';
-import { InputContainer, InputTitleText, InputTextInput, ResumeText, TextButton, ButtonStyleResume, PreNexButton, BB} from '../components/styles';
+import { DetailApplyButton, ButtonText,InputContainer, InputTitleText, InputTextInput, ResumeText, TextButton, ButtonStyleResume, PreNexButton, BB} from '../components/styles';
 
 const ResumeScreen2 = ({ navigation }) => {
   const [isExperience, setIsExperience] = useState(false);
@@ -12,18 +12,18 @@ const ResumeScreen2 = ({ navigation }) => {
   
 
   return (
-    <View>
-      <ResumeText style={{ marginTop: 100, marginLeft: 22 }}>
-        <Text style={{ color: '#FCA34D' }}>
+    <View style = {{backgroundColor : "#F9F9F9", height: "100%"}}>
+      <ResumeText style={{ marginTop: 100, marginLeft: 18 }}>
+        <Text style={{ fontFamilly: "Pretendard-Bold", fontSize : 40,color: '#FCA34D' }}>
           경력사항
         </Text>
-        이 있나요?
+         이 있나요?
       </ResumeText>
 
 
         <View>
-        <InputContainer style = {{marginTop : 16, marginLeft : 16}}>
-                <InputTitleText>회사명</InputTitleText>
+        <InputContainer style = {{marginTop : 24, marginLeft : 20}}>
+                <InputTitleText style={{ fontFamilly: "Pretendard-Bold", fontSize : 14, marginLeft : 2}}>회사명</InputTitleText>
                 <InputTextInput
                     placeholder="회사명을 입력하세요"
                     value={userwhere}
@@ -33,8 +33,8 @@ const ResumeScreen2 = ({ navigation }) => {
          
 
     
-            <InputContainer style = {{marginTop : 16, marginLeft : 16}}>
-                <InputTitleText>근무기간</InputTitleText>
+            <InputContainer style = {{marginTop : 16, marginLeft : 20}}>
+                <InputTitleText style={{ fontFamilly: "Pretendard-Bold", fontSize : 14, marginLeft : 2}}>근무기간</InputTitleText>
                 <InputTextInput
                     placeholder="근무기간을 입력하세요"
                     value={userwhen}
@@ -42,16 +42,20 @@ const ResumeScreen2 = ({ navigation }) => {
                 ></InputTextInput>
             </InputContainer>
 
-            <InputContainer style = {{marginTop : 16, marginLeft : 16}}>
-                <InputTitleText>담당업무</InputTitleText>
+            <InputContainer style = {{marginTop : 16, marginLeft : 20}}>
+                <InputTitleText style={{ fontFamilly: "Pretendard-Bold", fontSize : 14, marginLeft : 2}}>담당업무</InputTitleText>
                 <InputTextInput
+                    textAlign='top'
+                    style = {{ height : 150}}
                     placeholder="담당업무를 입력해 주세요"
                     value={userwhat}
                     onChangeText={(what) => setUserwhere(what)}
                 ></InputTextInput>
             </InputContainer>
           
-       
+            <DetailApplyButton style= {{marginLeft : 17}}onPress={() => {ToastAndroid.show('정상적으로 이력서가 접수 되었습니다.', ToastAndroid.SHORT);}} >
+              <ButtonText>이력서 저장하기</ButtonText>
+            </DetailApplyButton>
         </View>
       
     </View>

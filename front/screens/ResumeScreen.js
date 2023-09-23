@@ -24,7 +24,7 @@ const ResumeScreen = ({ navigation }) => {
 
 
   return (
-    <View>
+    <View >
        <ResumeText style = {{marginTop : 100,marginLeft : 22}}>
                     <Text style={{ color: '#FCA34D'}}>
                         이력서 제목
@@ -36,34 +36,36 @@ const ResumeScreen = ({ navigation }) => {
         value={resumeTitle}
         onChangeText={text => setResumeTitle(text)}
         style={{
+          fontFamily : "Pretendard-Regular",
           borderWidth: 1,
           borderColor: 'gray',
-          borderRadius: 5,
-          padding: 10,
-          margin: 10,
+          borderRadius: 8,
+          padding: 16,
+          margin: 22,
         }}
       />
 
-      <ResumeContentsText style = {{marginTop : 40 ,marginLeft : 22}}>이런 제목은 어때요?</ResumeContentsText>
+      <ResumeContentsText style = {{marginTop : 30 ,marginLeft : 22}}>이런 제목은 어때요?</ResumeContentsText>
+      
       <ResumeContents1Text style = {{marginTop : 10 ,marginLeft : 22,color:"#808080"}}>경력 강조형</ResumeContents1Text>
       <ResumeContents2Text style = {{marginTop : 5 ,marginLeft : 22}}>회사업무 경력 5년, 바로 실무가 가능합니다.{"\n"}유사 직무 경험이 있습니다.</ResumeContents2Text>
 
-      <ResumeContents1Text style = {{marginTop : 10 ,marginLeft : 22,color:"#808080"}}>성격/각오강조형</ResumeContents1Text>
+      <ResumeContents1Text style = {{marginTop : 16 ,marginLeft : 22,color:"#808080"}}>성격/각오강조형</ResumeContents1Text>
       <ResumeContents2Text style = {{marginTop : 5 ,marginLeft : 22}}>열정적으로 임할 수 있습니다.{"\n"}노련합니다.</ResumeContents2Text>
 
     
-      <ResumeContents1Text style = {{marginTop : 10 ,marginLeft : 22,color:"#808080"}}>역량 강조형</ResumeContents1Text>
+      <ResumeContents1Text style = {{marginTop : 16 ,marginLeft : 22,color:"#808080"}}>역량 강조형</ResumeContents1Text>
       <ResumeContents2Text style = {{marginTop : 5 ,marginLeft : 22}}>영어를 잘합니다.{"\n"}유연한 대처가 가능합니다.</ResumeContents2Text>
 
       <ButtonStyleResume>
             <PreNexButton
-              style={{ marginRight: 'auto' }}
+              style={{ marginLeft: 16, marginRight: 'auto' }}
               onPress={handlePrevious}
             >
               <TextButton>이전</TextButton>
             </PreNexButton>
             <PreNexButton
-              style={{ marginLeft: 'auto'}}
+              style={{ marginRight: 16,marginLeft: 'auto'}}
               onPress={handleNext} 
             >
               <TextButton>다음</TextButton>

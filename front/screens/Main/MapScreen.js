@@ -96,15 +96,15 @@ export default function App() {
         {selectedItem && (
             <>
               <Text style={styles.tag}>Tag: {selectedItem.tag}</Text>
-              <Text>{selectedItem.address}</Text>
-              <Text>{selectedItem.num_applicants}/{selectedItem.num_recruit}</Text>
-              <Text>{selectedItem.period}</Text>
-              <Text>{selectedItem.salary}</Text>
-              <Text>{selectedItem.working_hours}</Text>
+              <Text style={{fontFamily : "Pretendard-Bold", fontSize:16}}>{selectedItem.address}</Text>
+              <Text style={{fontFamily : "Pretendard-Regular", fontSize:14}}>{selectedItem.num_applicants}/{selectedItem.num_recruit}</Text>
+              <Text style={{fontFamily : "Pretendard-Regular", fontSize:14}}>{selectedItem.period}</Text>
+              <Text style={{fontFamily : "Pretendard-Regular", fontSize:14}}>{selectedItem.salary}</Text>
+              <Text style={{fontFamily : "Pretendard-Regular", fontSize:14}}>{selectedItem.working_hours}</Text>
               <TouchableOpacity
   style={styles.applyButton}
   onPress={() => {
-    navigation.navigate('DetailScreen', { itemId: selectedItem.post_id });
+    navigation.navigate('DetailScreen', { idx: selectedItem.post_id });
   }}
 >
   <Text style={styles.applyButtonText}>Apply</Text>
@@ -125,6 +125,7 @@ const styles = StyleSheet.create({
   applyButton: {
     backgroundColor: 'orange', // Change to your desired color
     padding: 10,
+    width : "90%",
     borderRadius: 10,
     marginTop: 10,
     alignItems: 'center',
@@ -150,6 +151,7 @@ const styles = StyleSheet.create({
     bottom: 0, // Adjust this value to control how much the drawer covers the map
     left: 0,
     right: 0,
+    width : "90%",
     backgroundColor: 'white', // Set the background color to make it opaque
     height: 200, // Adjust the height of the drawer
     borderTopLeftRadius: 20, // Add border radius for a nicer look

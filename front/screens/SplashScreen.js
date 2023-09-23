@@ -8,16 +8,16 @@ const SplashScreen = ({navigation}) => {
     return (
         <MainContainer>
             <TitleContainer>
-                <AppNameText>JobSpot</AppNameText>
+                <AppNameText>모서리</AppNameText>
             </TitleContainer>
             <ImageContainer>
                 <Image source={require('./../assets/images/Splash.png')} style={{ width: '90%', height: '90%', resizeMode: 'contain' }} />
             </ImageContainer>
             <MainTextContainer>
-                <LargeText>
-                    여러분들, {"\n"}일자리 구하기{"\n"}
+            <LargeText>
+                    모두 함께,{"\n"}서로,{"\n"}
                     <Text style={{ color: '#FCA34D' }}>
-                        힘드셨죠?
+                        이롭게
                     </Text>
                 </LargeText>
                 <SmallText style = {{margin : 4}}>
@@ -26,7 +26,7 @@ const SplashScreen = ({navigation}) => {
             </MainTextContainer>
             <NextContainer>
                 <NextButton onPress={nextView}>
-                    <Image source={require('./../assets/images/NextButton.png')} style={{ width: '90%', height: '90%', resizeMode: 'contain' }} />
+                    <Image source={require('./../assets/images/NextButton2.png')} style={{ width: '90%', height: '90%', resizeMode: 'contain' }} />
                 </NextButton>
             </NextContainer>
         </MainContainer>
