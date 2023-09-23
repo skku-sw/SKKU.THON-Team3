@@ -474,3 +474,111 @@ export const ApplyButton = styled.TouchableOpacity`
     border-radius: 5px;
     height: 28px;
 `
+
+//filterScreen
+export const SearchContainer = styled.View`
+    width: 90%;
+    height: 80px;
+    background-color: ghost-white;
+    border-radius: 8px;
+    margin-top  : 50px;
+    align-items: center;
+    flex-direction : row;
+    justify-content: center ;
+
+`
+
+export const SearchTextInput = styled.TextInput`
+    background-color : ${secondary};
+    padding: 15px;
+    border-radius: 5px;
+    font-family: Pretendard-Regular;
+    font-size: 16px;
+    height: 50px;
+    margin-end : 10px;
+    width: 80%;
+    color: ${tertiary};
+`;
+
+export const SearchImage = styled.TouchableOpacity`
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+    background-color: ${primary};
+`
+
+export const DetailTitleContainer = styled.View` 
+    width: 100%;
+    height: 250px;
+    align-items: center;
+    background-color: ${primary};
+    position: relative; 
+`;
+
+export const DetailTitleImage = styled.Image`
+    position: absolute;  
+    bottom: 38%;
+    z-index: 1;
+    padding: 16px;
+    width: 90px;
+    height: 90px;
+    border-radius: 50px;
+    background-color: #D6CDFE;
+`;
+
+export const DetailTitleBox = styled.View`
+    width: 100%;
+    height: 50%;
+    position: absolute;  
+    bottom: 0px;
+    margin-top : 0px;
+    background-color: #F9F9F9;
+`;
+
+export const DetailTextContainer = styled.View`
+    width: 100%;
+    height: 65%;
+    padding: 10px;
+    position: absolute;  
+    align-items: center;
+    bottom: 0px;
+    background-color: #F9F9F9;
+`
+export const DetailTitleText = styled.Text`
+    color: #0D0140;
+    font-size: 20px;
+    font-family: Pretendard-Bold;
+    margin-bottom: 10px; 
+`
+
+export const DetailDescContainer = styled.View`
+    margin-top: 30px;
+    padding : 10px;
+    border-radius : 16px;
+    width:90%;
+    background-color: ${primary};
+`
+
+export const DetailRequireContainer = styled.View`
+    margin-top: 30px;
+    padding : 10px;
+    border-radius : 16px;
+    width:90%;
+    background-color: ${primary};
+`
+
+export const DetailSubtileText = styled.Text`
+    color: #0D0140;
+    font-size: 16px;
+    font-family: Pretendard-Bold;
+    margin-top: 5px; 
+`
+export const DetailApplyButton = styled.TouchableOpacity`
+    width:90%;
+    background-color: ${brand};
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    margin-vertical: 30px;
+    height: 60px;
+`;

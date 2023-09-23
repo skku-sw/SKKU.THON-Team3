@@ -1,7 +1,9 @@
-import React, {useState,useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { Octicons, Ionicons, Fontisto, FontAwesome} from '@expo/vector-icons';
-import { Text, FlatList,View, ScrollView } from 'react-native';
+
+import { Image, View,FlatList,ScrollView, Text } from 'react-native';
 import axios from 'axios';
+
 import {
     ScrollContainer,
     ScreenContainer, 
@@ -33,14 +35,28 @@ import {
     TagText,
     TagBox,
     ApplyButton,
+    SearchContainer,
+    SearchTextInput,
+    SearchImage
 } from './../../components/styles';
-
-const tagMapping = {
+const FilterScreen = ({ route, navigation }) => {
+  const [data, setData] = useState([]);
+  const filterValue = route.params.filter; // Filter 값이 항상 존재한다고 가정
+  const [bookmarked, setBookmarked] = useState({});
+  const [searchText, setSearchText] = useState('');
+  const toggleBookmark = (id) => {
+      setBookmarked(prevState => ({
+          ...prevState,
+          [id]: !prevState[id]
+      }));
+  }
+  const tagMapping = {
     senior: '노약자',
     foreign: '외국인',
     single_mom: '미혼모',
     north: '탈북민',
   };
+
   const iconImages = [
     require('./../../assets/images/icon1.png'),
     require('./../../assets/images/icon1.png'),
@@ -48,84 +64,73 @@ const tagMapping = {
     require('./../../assets/images/icon4.png'),
     require('./../../assets/images/icon4.png'),
   ];
-const {brand, darkLight, primary} = Colors;
-const HomeScreen = ({navigation}) => {
-    const [data, setData] = useState([]);
-    const [bookmarked, setBookmarked] = useState({});
-    const toggleBookmark = (id) => {
-        setBookmarked(prevState => ({
-            ...prevState,
-            [id]: !prevState[id]
+
+  const handleImagePress = () => {
+    setData([]);
+    console.log(searchText);
+    axios.post('http://10.0.2.2:3000/posts/search', {
+        searchTerm : searchText
+    })
+    .then(response => {
+        console.log(response.data);
+        const processedData = response.data.map((item) => ({
+          id: String(item.id),
+          agency: item.agency,
+          title: item.title,
+          content: item.content,
+          tags: item.tag.split(',').map((tag) => tag.trim()),
+          period: item.period,
+          num_recruit: item.num_recruit,
+          region: item.region,
+          num_applicants: item.num_applicants,
+          icon: iconImages[Math.floor(Math.random() * iconImages.length)],
         }));
+        setData(processedData);
+      })
+      .catch((error) => {
+        console.error('There was an error!', error);
+      });
     }
-    useEffect(() => {
-        axios.get('http://10.0.2.2:3000/posts', {})
-            .then(response => {
-                console.log(response.data);
-                const processedData = response.data.map(item => ({
-                    id: String(item.id),
-                    agency: item.agency,
-                    title: item.title,
-                    content: item.content,
-                    tags: item.tag.split(',').map((tag) => tag.trim()), // 태그를 쉼표로 분리하여 배열로 저장
-                    period: item.period,
-                    num_recruit: item.num_recruit,
-                    region: item.region,
-                    num_applicants: item.num_applicants,
-                    icon: iconImages[Math.floor(Math.random() * iconImages.length)]
-                  }));
-                  setData(processedData);
-            })
-            .catch(error => {
-                console.error('There was an error!', error);
-            });
-    }, []); 
+  useEffect(() => {
+    // Filter 값이 항상 존재한다고 가정하므로 조건 체크 없이 진행
+    axios.get(`http://10.0.2.2:3000/posts/tag/${filterValue}`, {})
+      .then((response) => {
+        console.log(response.data);
+        const processedData = response.data.map((item) => ({
+          id: String(item.id),
+          agency: item.agency,
+          title: item.title,
+          content: item.content,
+          tags: item.tag.split(',').map((tag) => tag.trim()),
+          period: item.period,
+          num_recruit: item.num_recruit,
+          region: item.region,
+          num_applicants: item.num_applicants,
+          icon: iconImages[Math.floor(Math.random() * iconImages.length)],
+        }));
+        setData(processedData);
+      })
+      .catch((error) => {
+        console.error('There was an error!', error);
+      });
+  }, [filterValue]); // filterValue가 변경될 때만 실행
 
-    return (
-        <ScrollView>
+  return (
+    <ScrollView>
             <ScreenContainer>
-                <HomeFullNameContainer>
-                    <HomeFullNameText>안녕하세요{'\n'}김태훈님.</HomeFullNameText>
-                    <ProfileImage resizeMode="cover" source={require('./../../assets/images/skku.jpg')}></ProfileImage>
-                </HomeFullNameContainer>
-                <FilterContainer>
-                    <HomeText>여러분에게 특화된 일자리를 찾아보아요</HomeText>
-                    <FilterWrap>
-                        <RightContainer>
-                            <TopRightBox style = {{backgroundColor : "#A1E8AF"}} onPress={() => {
-                            //const filteredTeams = filterTeamsByTag('Hobby');
-                            navigation.navigate('FilterScreen', {filter : 'senior'})
-                        }}>
-                                <NumberText>66.8K</NumberText>
-                                <FilterText>노인</FilterText>
-                            </TopRightBox>
-                            <BottomRightBox style = {{backgroundColor : "#FFC3A0"}} onPress={() => {
-                            navigation.navigate('FilterScreen', {filter : 'foriegn'})
-                        }}>
-                                <NumberText>38.9K</NumberText>
-                                <FilterText>외국인</FilterText>
-                            </BottomRightBox>
-                        </RightContainer>
-                        <RightContainer style = {{ marginLeft : 5}}>
-                            <TopRightBox style = {{backgroundColor : "#AEC6CF"}} onPress={() => {
-                            //const filteredTeams = filterTeamsByTag('Hobby');
-                            navigation.navigate('FilterScreen', {filter : 'north'})
-                        }}>
-                                <NumberText>66.8K</NumberText>
-                                <FilterText>새터민</FilterText>
-                            </TopRightBox>
-                            <BottomRightBox style = {{backgroundColor : "#D6B0E4"}} onPress={() => {
-                            navigation.navigate('FilterScreen', {filter : 'single_mom'})
-                        }}>
-                                <NumberText>38.9K</NumberText>
-                                <FilterText>미혼모</FilterText>
-                            </BottomRightBox>
-                        </RightContainer>
-                    </FilterWrap>
-                </FilterContainer>
-
-
-
+            <SearchContainer>
+                
+                <SearchTextInput
+                    value={searchText}
+                    onChangeText={setSearchText}  // 사용자 입력값을 searchText에 저장합니다.
+                />
+                <SearchImage onPress={handleImagePress}>
+                <Image 
+                    source={require('./../../assets/images/search.png')} 
+                    style={{ width: 30, height: 30, borderRadius: 20 }} // 스타일을 적용하여 이미지 크기와 모양을 조절합니다.
+                />
+            </SearchImage>
+            </SearchContainer>
                 <TeamContainer>
                     
                     <FlatList
@@ -180,7 +185,7 @@ const HomeScreen = ({navigation}) => {
                 </TeamContainer>
             </ScreenContainer>
         </ScrollView>
-    );
+  );
 };
 
-export default HomeScreen;
+export default FilterScreen;
