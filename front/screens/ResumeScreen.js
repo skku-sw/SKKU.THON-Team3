@@ -5,32 +5,26 @@ import { ResumeContents2Text,ResumeContents1Text,ResumeContentsText,ResumeText,T
 
 
 const ResumeScreen = ({ navigation }) => {
-    const nextView = () => {
+    const handleNext = () => {
+       
         navigation.navigate("ResumeScreen2");
-    }
+        
+      };
+      const handlePrevious = () => {
+       
+        navigation.navigate("MyPageScreen");
+        
+      };
   const [resumeTitle, setResumeTitle] = useState('');
-  const [name, setName] = useState('');
-  const [gender, setGender] = useState('');
-  const [age, setAge] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [email, setEmail] = useState('');
-
+  
   const handleSaveTitle = () => {
     // 이력서 제목 저장 또는 처리 로직을 추가하세요.
     console.log('이력서 제목:', resumeTitle);
   };
 
-  const handleSavePersonalInfo = () => {
-    // 이름, 성별, 나이, 휴대폰 번호, 이메일 저장 또는 처리 로직을 추가하세요.
-    console.log('이름:', name);
-    console.log('성별:', gender);
-    console.log('나이:', age);
-    console.log('휴대폰 번호:', phoneNumber);
-    console.log('이메일:', email);
-  };
 
   return (
-    <View>
+    <View >
        <ResumeText style = {{marginTop : 100,marginLeft : 22}}>
                     <Text style={{ color: '#FCA34D'}}>
                         이력서 제목
@@ -42,35 +36,37 @@ const ResumeScreen = ({ navigation }) => {
         value={resumeTitle}
         onChangeText={text => setResumeTitle(text)}
         style={{
+          fontFamily : "Pretendard-Regular",
           borderWidth: 1,
           borderColor: 'gray',
-          borderRadius: 5,
-          padding: 10,
-          margin: 10,
+          borderRadius: 8,
+          padding: 16,
+          margin: 22,
         }}
       />
 
-      <ResumeContentsText style = {{marginTop : 40 ,marginLeft : 22}}>이런 제목은 어때요?</ResumeContentsText>
+      <ResumeContentsText style = {{marginTop : 30 ,marginLeft : 22}}>이런 제목은 어때요?</ResumeContentsText>
+      
       <ResumeContents1Text style = {{marginTop : 10 ,marginLeft : 22,color:"#808080"}}>경력 강조형</ResumeContents1Text>
       <ResumeContents2Text style = {{marginTop : 5 ,marginLeft : 22}}>회사업무 경력 5년, 바로 실무가 가능합니다.{"\n"}유사 직무 경험이 있습니다.</ResumeContents2Text>
 
-      <ResumeContents1Text style = {{marginTop : 10 ,marginLeft : 22,color:"#808080"}}>성격/각오강조형</ResumeContents1Text>
+      <ResumeContents1Text style = {{marginTop : 16 ,marginLeft : 22,color:"#808080"}}>성격/각오강조형</ResumeContents1Text>
       <ResumeContents2Text style = {{marginTop : 5 ,marginLeft : 22}}>열정적으로 임할 수 있습니다.{"\n"}노련합니다.</ResumeContents2Text>
 
     
-      <ResumeContents1Text style = {{marginTop : 10 ,marginLeft : 22,color:"#808080"}}>역량 강조형</ResumeContents1Text>
+      <ResumeContents1Text style = {{marginTop : 16 ,marginLeft : 22,color:"#808080"}}>역량 강조형</ResumeContents1Text>
       <ResumeContents2Text style = {{marginTop : 5 ,marginLeft : 22}}>영어를 잘합니다.{"\n"}유연한 대처가 가능합니다.</ResumeContents2Text>
 
       <ButtonStyleResume>
             <PreNexButton
-              style={{ marginRight: 'auto' }}
-              onPress={() => handleMotionSelect('Previous')}
+              style={{ marginLeft: 16, marginRight: 'auto' }}
+              onPress={handlePrevious}
             >
               <TextButton>이전</TextButton>
             </PreNexButton>
             <PreNexButton
-              style={{ marginLeft: 'auto'}}
-              onPress={() => handleMotionSelect('Next')} 
+              style={{ marginRight: 16,marginLeft: 'auto'}}
+              onPress={handleNext} 
             >
               <TextButton>다음</TextButton>
             </PreNexButton>

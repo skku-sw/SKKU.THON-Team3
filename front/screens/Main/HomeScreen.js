@@ -34,7 +34,7 @@ import {
     TagBox,
     ApplyButton,
 } from './../../components/styles';
-
+import { UserContext } from './../../UserContext';
 const tagMapping = {
     senior: '노약자',
     foreign: '외국인',
@@ -49,7 +49,9 @@ const tagMapping = {
     require('./../../assets/images/icon4.png'),
   ];
 const {brand, darkLight, primary} = Colors;
+
 const HomeScreen = ({navigation}) => {
+    const userValue = React.useContext(UserContext);
     const [data, setData] = useState([]);
     const [bookmarked, setBookmarked] = useState({});
     const toggleBookmark = (id) => {
@@ -59,7 +61,8 @@ const HomeScreen = ({navigation}) => {
         }));
     }
     useEffect(() => {
-        axios.get('http://10.0.2.2:3000/posts', {})
+        console.log(userValue.user);
+        axios.get(`http://10.0.2.2:3000/posts/?nickname=${userValue.user}`, {})
             .then(response => {
                 console.log(response.data);
                 const processedData = response.data.map(item => ({
@@ -72,8 +75,15 @@ const HomeScreen = ({navigation}) => {
                     num_recruit: item.num_recruit,
                     region: item.region,
                     num_applicants: item.num_applicants,
-                    icon: iconImages[Math.floor(Math.random() * iconImages.length)]
+                    icon: iconImages[Math.floor(Math.random() * iconImages.length)],
+                
                   }));
+                  const newBookmarked = {};
+                    response.data.forEach((item) => {
+                        newBookmarked[String(item.id)] = item.isBookmarked || false;
+                    });
+
+                    setBookmarked(newBookmarked);
                   setData(processedData);
             })
             .catch(error => {
@@ -92,14 +102,14 @@ const HomeScreen = ({navigation}) => {
                     <HomeText>여러분에게 특화된 일자리를 찾아보아요</HomeText>
                     <FilterWrap>
                         <RightContainer>
-                            <TopRightBox style = {{backgroundColor : "#A1E8AF"}} onPress={() => {
+                            <TopRightBox style = {{backgroundColor : "#FFC0CB"}} onPress={() => {
                             //const filteredTeams = filterTeamsByTag('Hobby');
                             navigation.navigate('FilterScreen', {filter : 'senior'})
                         }}>
                                 <NumberText>66.8K</NumberText>
                                 <FilterText>노인</FilterText>
                             </TopRightBox>
-                            <BottomRightBox style = {{backgroundColor : "#FFC3A0"}} onPress={() => {
+                            <BottomRightBox style = {{backgroundColor : "#E6E6FA"}} onPress={() => {
                             navigation.navigate('FilterScreen', {filter : 'foriegn'})
                         }}>
                                 <NumberText>38.9K</NumberText>
@@ -107,14 +117,14 @@ const HomeScreen = ({navigation}) => {
                             </BottomRightBox>
                         </RightContainer>
                         <RightContainer style = {{ marginLeft : 5}}>
-                            <TopRightBox style = {{backgroundColor : "#AEC6CF"}} onPress={() => {
+                            <TopRightBox style = {{backgroundColor : "#FFFFE0"}} onPress={() => {
                             //const filteredTeams = filterTeamsByTag('Hobby');
                             navigation.navigate('FilterScreen', {filter : 'north'})
                         }}>
                                 <NumberText>66.8K</NumberText>
                                 <FilterText>새터민</FilterText>
                             </TopRightBox>
-                            <BottomRightBox style = {{backgroundColor : "#D6B0E4"}} onPress={() => {
+                            <BottomRightBox style = {{backgroundColor : "#F5DEB3"}} onPress={() => {
                             navigation.navigate('FilterScreen', {filter : 'single_mom'})
                         }}>
                                 <NumberText>38.9K</NumberText>
@@ -143,16 +153,18 @@ const HomeScreen = ({navigation}) => {
                                     <View style={{ position: 'relative' }}>
                                         <FontAwesome 
                                             name="bookmark-o" 
-                                            size={25} 
+                                            size={25 } 
+                        
                                             color="black"
                                             onPress={() => toggleBookmark(item.id)}
                                         />
                                         {bookmarked[item.id] && (
+                                            
                                             <FontAwesome 
                                                 name="bookmark" 
                                                 size={25} 
-                                                color="yellow"
-                                                style={{ position: 'absolute', top: 0, left: 0 }}
+                                                color="#FCA34D"
+                                                style={{ position: 'absolute', top: 0, right: 0 }}
                                                 onPress={() => toggleBookmark(item.id)}
                                             />
                                         )}

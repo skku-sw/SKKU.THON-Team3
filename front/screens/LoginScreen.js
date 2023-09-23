@@ -9,7 +9,7 @@ const LoginScreen = ({ navigation }) => {
   
     const handleLogin = async () => {
       try {
-        const response = await axios.post('http://localhost:3000/login', {
+        const response = await axios.post('http://10.0.2.2:3000/login', {
           nickname: userId,
           password: userPassword,
         });
@@ -17,7 +17,7 @@ const LoginScreen = ({ navigation }) => {
         if (response.status === 200) {
           // 로그인 성공
           if (response.data === '로그인 성공') {
-            navigation.navigate("SplashScreen");
+            navigation.navigate("MainScreen");
           } else {
             // 서버 응답이 '로그인 성공'이 아닌 경우에 대한 처리
             ToastAndroid.show('서버 응답 오류', ToastAndroid.SHORT);
@@ -42,8 +42,8 @@ const LoginScreen = ({ navigation }) => {
     return (
        <MainContainer>
             <LoginTitleContainer>
-                <LoginTitleText>Welcome Back</LoginTitleText>
-                <LoginSubTitleText>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</LoginSubTitleText>
+                <LoginTitleText>어서오세요</LoginTitleText>
+                <LoginSubTitleText>모두함꼐, 서로 함께, 이롭게, 모서리와 함께 일자리를 찾아볼까요?</LoginSubTitleText>
             </LoginTitleContainer>
             <InputContainer style = {{marginTop : 80}}>
                 <InputTitleText>아이디</InputTitleText>
@@ -70,7 +70,6 @@ const LoginScreen = ({ navigation }) => {
 
             <LoginBelowContainer>
                 <LoginBelowImageContainer>
-                    <Image source={require('./../assets/images/RememberBox.png')} style={{ width: "100%", height: "100%", resizeMode: 'contain' }} />
                 </LoginBelowImageContainer>
                 <SmallText style = {{marginLeft : 8, fontSize: 12, color :"#AAA6B9"}}>Remember Me</SmallText>
                 <SmallText style = {{marginLeft : 140 , marginRight : 8, fontSize: 12}}>Forgot Password</SmallText>

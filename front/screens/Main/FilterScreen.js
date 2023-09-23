@@ -39,7 +39,9 @@ import {
     SearchTextInput,
     SearchImage
 } from './../../components/styles';
+import { UserContext } from './../../UserContext';
 const FilterScreen = ({ route, navigation }) => {
+  const userValue = React.useContext(UserContext);
   const [data, setData] = useState([]);
   const filterValue = route.params.filter; // Filter 값이 항상 존재한다고 가정
   const [bookmarked, setBookmarked] = useState({});
@@ -65,11 +67,11 @@ const FilterScreen = ({ route, navigation }) => {
     require('./../../assets/images/icon4.png'),
   ];
 
+  
   const handleImagePress = () => {
     setData([]);
     console.log(searchText);
-    axios.post('http://10.0.2.2:3000/posts/search', {
-        searchTerm : searchText
+    axios.get(`http://10.0.2.2:3000/posts/search/${searchText}?nickname=${userValue.user}`, {
     })
     .then(response => {
         console.log(response.data);

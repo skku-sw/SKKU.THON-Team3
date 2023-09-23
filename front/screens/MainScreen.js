@@ -22,29 +22,27 @@ function MainScreen({ route }) {
 
           if (route.name === '홈') {
             iconName = focused ? 'home' : 'home-outline';
-          } else if (route.name === '트렌딩') {
-            iconName = focused ? 'flashlight' : 'flashlight-outline'; 
-          } else if (route.name === '글쓰기') {
-            iconName = focused ? 'add-circle' : 'add-circle-outline'; 
-          } else if (route.name === "커뮤니티") {
-            iconName = focused ? "chatbox" : "chatbox-outline";
+          } else if (route.name === '피드') {
+            iconName = focused ? 'cloud' : 'cloud-outline'; 
+          } else if (route.name === '지도') {
+            iconName = focused ? 'map' : 'map-outline'; 
           } else if (route.name === "내 계정") {
             iconName = focused ? "settings" : "settings-outline";
           }
 
-          return <Ionicons name={iconName} size={size} color={color} />;
+          return <Ionicons name={iconName} size={24} color={"#FCA34D"} />;
         },
         tabBarActiveTintColor: "tomato",
         tabBarInactiveTintColor: "gray",
         tabBarStyle: [{ display: hideTabs ? "none" : "flex", height: 64}],
-        tabBarLabelStyle: { paddingBottom: 8 }, // Adjust the padding here
+        tabBarLabelStyle: { fontFamily : "Pretendard-Regular",fontSize: 13,paddingBottom: 4 }, // Adjust the padding here
         headerShown: false,
       })}
     >
       <Tab.Screen name="홈" component={HomeScreen} />
-      <Tab.Screen name="트렌딩" component={FeedScreen} />
-      <Tab.Screen name="글쓰기" component={MapScreen} />
-      <Tab.Screen name="커뮤니티" component={ChatScreen} initialParams={{ hideTabs: true }} />
+      <Tab.Screen name="피드" component={FeedScreen} />
+      <Tab.Screen name="지도" component={MapScreen} />
+      
       <Tab.Screen name="내 계정" component={MyPageScreen} />
 
     </Tab.Navigator>
