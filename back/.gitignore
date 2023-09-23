@@ -1,0 +1,14 @@
+# Node.js 환경에서 사용하는 .gitignore 예제
+
+# 디렉터리
+node_modules/
+dist/
+
+# 환경 파일 (예: .env)
+.env
+
+# 로그 및 임시 파일
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
