@@ -26,23 +26,23 @@
   + (근로계약서 작성 도움)
 
 ## 프로젝트에서 사용한 기술
-### Language
+#### Language
   + <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=black">
-### Runtime Environment
+#### Runtime Environment
   + <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=Node.js&logoColor=black">
-### FrontEnd
+#### FrontEnd
   + <img src="https://img.shields.io/badge/React Native-61DAFB?style=for-the-badge&logo=React&logoColor=black">
-### BackEnd
+#### BackEnd
   + <img src="https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=Express&logoColor=white">
-### DataBase
+#### DataBase
   + <img src="https://img.shields.io/badge/Amazon RDS-527FFF?style=for-the-badge&logo=AmazonRDS&logoColor=white">
   + <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=MySQL&logoColor=white">
-### Version Control
+#### Version Control
   + <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=Git&logoColor=white">
   + <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white">
-### Design Tool
+#### Design Tool
   + <img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=Figma&logoColor=white">
-### Collaboration Tool
+#### Collaboration Tool
   + <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white">
   + <img src="https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=Notion&logoColor=white">
   + <img src="https://img.shields.io/badge/KakaoTalk-FFCD00?style=for-the-badge&logo=KakaoTalk&logoColor=black">
