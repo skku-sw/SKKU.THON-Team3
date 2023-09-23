@@ -2,16 +2,12 @@ const express = require('express')
 const app = express()
 const port = 3000
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
-
-app.post('/lower', function (req, res) {
-  res.send('Got a POST request');
-});
-app.post('/upper', function (req, res) {
-  res.send('Got a POST request');
-});
+// app.use('/', require('./routes/login'));
+app.use('/', require('./routes/posts'));
+// app.use('/board', require('./routes/board'));
+// app.use('/map', require('./routes/map'));
+// app.use('/chat', require('./routes/chat'));
+// app.use('/myPage', require('./routes/myPage'));
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
