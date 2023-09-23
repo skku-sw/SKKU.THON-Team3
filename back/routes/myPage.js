@@ -96,8 +96,7 @@ module.exports = (db) => {
     router.post('/recent', (req, res) => {
         const requestData = req.body;
         db.query(`SELECT apply.apply_id, apply.post_id, apply.user_nickname, apply.apply_date,
-        posts.agency, posts.title, posts.content, posts.tag, posts.period,
-        posts.num_recruit
+        posts.agency, posts.title, posts.content, posts.tag, posts.period, posts.num_recruit, posts.num_applicants, posts.working_hours, posts.salary, posts.created_at
         FROM apply
         INNER JOIN posts ON apply.post_id = posts.id
         WHERE apply.user_nickname = ?
@@ -119,7 +118,7 @@ module.exports = (db) => {
     //북마크 조회
     router.post('/bookmark', (req, res) => {
         const requestData = req.body;
-        db.query(`SELECT bookmark.post_id, posts.title, posts.content, posts.tag, posts.period, posts.num_recruit
+        db.query(`SELECT bookmark.post_id, posts.title, posts.content, posts.tag, posts.period, posts.num_recruit,  posts.num_applicants, posts.working_hours, posts.salary, posts.created_at
         FROM bookmark
         INNER JOIN posts ON bookmark.post_id = posts.id
         WHERE bookmark.user_nickname = ?
