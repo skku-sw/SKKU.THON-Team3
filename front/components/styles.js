@@ -223,8 +223,32 @@ export const ResumeContents2Text = styled.Text`
     font-family: Pretendard-Regular;
     font-size: 18px;
     text-align: left;
-    font-style: normal;    
+    font-style: normal;
+
+    
 `
+export const ButtonStyleResume = styled.TouchableOpacity`
+    width : 100%;
+    flex-direction : row;
+    background-color : #F9F9F9;
+`
+export const PreNexButton = styled.TouchableOpacity`
+    
+    margin-top: 20px;
+    width : 46%;
+    height :50px;
+    border-radius : 8px;
+    background-color : #000080;
+    justify-content : center;
+    align-items : center;
+    `   
+export const TextButton = styled.Text`
+    color: ${primary};
+    font-family: Pretendard-Regular;
+    font-size: 20px;
+    letter-spacing: 8px;
+`
+
 export const ButtonStyled = styled.TouchableOpacity`
 background-color: ${deepblue};
 padding: 10px 20px;
@@ -232,7 +256,7 @@ border-radius: 15px;
 width: 335px; 
 height: 50px;
 margin-Top : 20px;
-`;
+`
 
 export const ButtonText = styled.Text`
 color: ${primary};

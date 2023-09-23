@@ -4,13 +4,14 @@ import TestScreen from './screens/TestScreen';
 import * as Font from 'expo-font';
 import { useEffect, useState } from 'react';
 import SplashScreen from './screens/SplashScreen';
-
 import "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import LoginScreen from './screens/LoginScreen';
 import SignUpScreen from './screens/SignUpScreen';
 import MainScreen from './screens/MainScreen';
+import MyPageScreen from './screens/Main/MyPageScreen';
+import ResumeScreen from './screens/ResumeScreen';
 export default function App() {
   const [isFontLoaded, setIsFontLoaded] = useState(false);
   useEffect(() => {
@@ -43,13 +44,14 @@ export default function App() {
   const Stack = createStackNavigator();
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="SplashScreen" screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="SplashScreen" component={SplashScreen} />
-        <Stack.Screen name="LoginScreen" component={LoginScreen} />
-        <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
-        <Stack.Screen name="MainScreen" component={MainScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Stack.Navigator initialRouteName="SplashScreen" screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="SplashScreen" component={SplashScreen} />
+      <Stack.Screen name="LoginScreen" component={LoginScreen} />
+      <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
+      <Stack.Screen name="MainScreen" component={MainScreen} />
+      <Stack.Screen name="ResumeScreen" component={ResumeScreen} />
+    </Stack.Navigator>
+  </NavigationContainer>
   );
 }
 
