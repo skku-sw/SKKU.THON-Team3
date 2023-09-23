@@ -2,7 +2,7 @@ import React from 'react';
 import {Text} from 'react-native';
 const TestScreen = () => {
     return (
-        <Text>TEsdfsST</Text>
+        <Text style={{fontFamily:"Pretendard-Bold"}}>TEsdfsST</Text>
     );
 };
 
