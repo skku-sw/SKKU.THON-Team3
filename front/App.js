@@ -8,7 +8,8 @@ import "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import LoginScreen from './screens/LoginScreen';
-
+import SignUpScreen from './screens/SignUpScreen';
+import MainScreen from './screens/MainScreen';
 export default function App() {
   const [isFontLoaded, setIsFontLoaded] = useState(false);
   useEffect(() => {
@@ -44,6 +45,8 @@ export default function App() {
       <Stack.Navigator initialRouteName="SplashScreen" screenOptions={{ headerShown: false }}>
         <Stack.Screen name="SplashScreen" component={SplashScreen} />
         <Stack.Screen name="LoginScreen" component={LoginScreen} />
+        <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
+        <Stack.Screen name="MainScreen" component={MainScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

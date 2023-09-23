@@ -76,3 +76,124 @@ export const NextButton = styled.TouchableOpacity`
     width: 60px;
     height: 60px;
 `
+// LoginScreen
+
+export const LoginTitleContainer = styled.View`
+    margin-top : ${StatusBarHeight + 80}px;
+    width : 80%;
+    align-items : center;
+    background-color : #F9F9F9;
+`
+
+export const LoginTitleText = styled.Text`
+    
+    font-family: Pretendard-Bold;
+    font-size: 32px;
+    text-align: left;
+    font-style: normal;
+    color : ${black};
+
+`
+export const LoginSubTitleText = styled.Text`
+    margin-top : 8px;
+    font-family: Pretendard-Light;
+    font-size: 12px;
+    text-align: center;
+    font-style: normal;
+    color : ${black};
+
+`
+
+export const InputContainer = styled.View `
+    width : 90%;
+    align-items : left;
+    background-color : #F9F9F9;
+`
+export const InputTitleText = styled.Text`
+    color: #0D0140;
+    font-family: Pretendard-Bold;
+    font-size: 12px;
+`
+
+export const InputTextInput = styled.TextInput`
+    
+    padding: 15px;
+    padding-left: 20px;
+    margin-top : 8px;
+    border-radius: 10px;
+    border: 1px solid #FFFEFE;
+    background: #E0DEDE;
+    font-family: Pretendard-Regular;
+    font-size: 14px;
+    height: 56px;
+    margin-vertical: 3px;
+    margin-bottom: 10px;
+    color: ${tertiary};
+`;
+
+export const LoginBelowContainer = styled.View`
+    
+    flex-direction: row;
+    width : 93%;
+    height : 50px;
+    align-items : center;
+    background-color : #F9F9F9;
+`
+
+export const LoginBelowImageContainer = styled.View`
+    margin-left : 8px;
+    width : 24px;
+    height : 24px;
+    border-radius : 8px;
+    background-color : #E6E1FF;
+`
+
+export const ButtonContainer = styled.TouchableOpacity`
+    border-radius : 8px;
+    align-items: center;
+    justify-content : center;
+    width : 70%;
+    height : 60px;
+    background-color : #130160;
+`
+
+export const WhiteButtonText = styled.Text`
+    color: #FFFFFF;
+    font-family: Pretendard-Bold;
+    font-size: 14px;
+`
+export const TestView = styled.View`
+    margin-top : 16px;
+    flex-direction : row;
+    justify-content : center;
+    align-items : center;
+    background-color : #F9F9F9;
+`
+export const NextSignUpContainer = styled.TouchableOpacity`
+    background-color : #F9F9F9;
+`
+
+//SignUpScreen
+
+export const SexContainer = styled.View`
+    width : 100%;
+    flex-direction : row;
+    background-color : #F9F9F9;
+`
+export const SexButton = styled.TouchableOpacity`
+    
+    margin-top: 8px;
+    width : 46%;
+    height :50px;
+    border-radius : 8px;
+    background-color : #E0DEDE;
+    justify-content : center;
+    align-items : center;
+`
+
+export const SexText = styled.Text`
+    color: ${tertiary};
+    font-family: Pretendard-Regular;
+    font-size: 20px;
+    letter-spacing: 8px;
+`
