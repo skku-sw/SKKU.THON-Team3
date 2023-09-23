@@ -16,13 +16,37 @@
 > 리 롭게
 
 + *황근이와 아이들* 팀은 **사회적 소외계층을 위한 일자리 추천 서비스**라는 주제를 통해 *공공의 이익* 을 실현하는 어플리케이션을 만들었습니다.
-+ 다음과 같은 기능이 포함되어 있습니다. 
-  + 로그인 및 회원가입
-  + 본인의 조건에 맞는 일자리 필터링 및 검색
-  + 원하는 일자리 연결 지원
-  + 사회적 소외계층 커뮤니티
-  + 지도를 통한 주변 일자리 확인
-  + (이력서 작성 도움)
++ 다음과 같은 기능이 포함되어 있습니다.
+#### 0. 첫 화면
+  <img width='300' alt = '' src="https://github.com/skku-sw/SKKU.THON-Team3/assets/63841863/cee94196-9ed3-4d8f-a495-b8caf125a854"><hr>
+  
+#### 1. 로그인
+  <img width='300' alt = '' src="https://github.com/skku-sw/SKKU.THON-Team3/assets/63841863/bf367b42-26f7-4c01-9e96-58bb088bd9c0"><hr>
+  
+#### 2. 회원가입
+  <img width='300' alt = '' src="https://github.com/skku-sw/SKKU.THON-Team3/assets/63841863/df59a1c0-ea9c-4be6-bede-661d2901aefb">
+  <img width='300' alt = '' src="https://github.com/skku-sw/SKKU.THON-Team3/assets/63841863/dfd26312-3b0f-4655-88cb-66982cff06ac"><hr>
+  
+#### 3. 본인의 조건에 맞는 일자리 필터링 및 검색
+  <img width='300' alt = '' src="https://github.com/skku-sw/SKKU.THON-Team3/assets/63841863/6046f197-600b-4ff2-b44b-c693668a17fc">
+  <img width='300' alt = '' src="https://github.com/skku-sw/SKKU.THON-Team3/assets/63841863/1f19702f-5ae8-4c69-a28a-ff8f7a98641f"><hr>
+
+#### 4. 원하는 일자리 연결 지원
+  <img width='300' alt = '' src="https://github.com/skku-sw/SKKU.THON-Team3/assets/63841863/b2a9bba6-fa1a-4e25-91ac-c4cd9120b004"><hr>
+
+#### 5. 사회적 소외계층 커뮤니티
+  <img width='300' alt = '' src="https://github.com/skku-sw/SKKU.THON-Team3/assets/63841863/4f15fa6c-0d03-4675-ae48-7d37afb192c3"><hr>
+  
+#### 6. 지도를 통한 주변 일자리 확인
+  <img width='300' alt = '' src="https://github.com/skku-sw/SKKU.THON-Team3/assets/63841863/09140739-cc5b-4dcc-bd7e-09ad89982ee7">
+  <img width='300' alt = '' src="https://github.com/skku-sw/SKKU.THON-Team3/assets/63841863/8a37f4d0-811f-4857-864e-6c28e7b6e4fe"><hr>
+
+#### 7. My Page 및 이력서 작성 도움
+  <img width='300' alt = '' src="https://github.com/skku-sw/SKKU.THON-Team3/assets/63841863/b2b2c16b-2d28-4b2b-9c86-2773e594321e">
+  <img width='300' alt = '' src="https://github.com/skku-sw/SKKU.THON-Team3/assets/63841863/a4023bb9-8f4f-4936-a37d-fd904a48f551">
+  <img width='300' alt = '' src="https://github.com/skku-sw/SKKU.THON-Team3/assets/63841863/bd98daeb-70b2-4fad-b20e-9b1611fc6930"><hr>
+  
++ 기획은 했지만 구현하지 못한 부분
   + (근로계약서 작성 도움)
 
 ## 프로젝트에서 사용한 기술
@@ -64,7 +88,10 @@
    ```
    npm install
    ```
-5. 
+5. front directory안에서 React Native 개발 환경에서 Expo 프로젝트를 실행하는 명령어를 입력합니다.
+   ```
+   npx expo start
+   ```
 
 
 ## Production 배포 방법
