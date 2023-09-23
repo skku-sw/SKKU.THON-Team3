@@ -2,9 +2,11 @@ const express = require('express');
 const router = express.Router();
 module.exports = (db) => {  
 
-  router.get('/', (req, res) => {
+  router.post('/', (req, res) => {
     // 특정 nickname을 가진 사용자가 지원한 수를 조회
-    db.query('SELECT COUNT(*) AS apply_count FROM apply WHERE user_nickname = ?', [req.query.nickname], (err, results) => {
+    const requestData = req.body;
+
+    db.query('SELECT COUNT(*) AS apply_count FROM apply WHERE user_nickname = ?', [requestData.nickname], (err, results) => {
       if(err){
         console.error('쿼리 실행 오류:', err);
         res.status(500).send('지원 현황 조회 실패');
@@ -15,20 +17,80 @@ module.exports = (db) => {
     });
 
   });
-  //이력서 저장
-  /*
-  router.post('/save', (req, res) => {
+  //이력서 조회
+  router.post('/resume', (req, res) => {
     const requestData = req.body;
-    console.log(requestData);
-    db.query('INSERT INTO resume SET ?', requestData, (err, results) => {
-      if (err) {
+    db.query('SELECT * FROM resume WHERE nickname = ?', [requestData.nickname], (err, results) => {
+      if(err){
         console.error('쿼리 실행 오류:', err);
-        res.status(500).send('데이터베이스 오류');
-      } else {
-        res.json(results);
+        res.status(500).send('이력서 조회 실패');
+      }
+      else{
+        if(results.length === 0){
+          res.status(404).send('이력서 조회 실패')
+        }
+        else{
+          res.json(results);
+        }
       }
     });
-  }*/
+  });
+
+  //이력서 만들기 => 처음 만들때 5가지 정보 보내주는 거
+  router.post('/resume/create', (req, res) => {
+    const requestData = req.body;
+    db.query('select username, sex, category, age, phone_number from resume where nickname = ?', [requestData.nickname], (err, results) => {
+      if(err){
+        console.error('쿼리 실행 오류:', err);
+        res.status(500).send('이력서 조회 실패');
+      }
+      else{
+        if(results.length === 0){
+          res.status(404).send('이력서 조회 실패')
+        }
+        else{
+          res.json(results);
+        }
+      }
+    });
+  });
+
+  //이력서만들기 => pr
+  router.post('/resume/create/pr', (req, res) => {
+    const requestData = req.body;
+    db.query('update resume set pr = ? where nickname = ?', [requestData.pr, requestData.nickname], (err, results) => {
+      if(err){
+        console.error('쿼리 실행 오류:', err);
+        res.status(500).send('pr 저장 실패');
+      } else {
+        if(results.affectedRows === 0){
+          res.status(404).send('pr 저장 실패')
+        }
+        else{
+          res.status(200).send('pr 저장 성공');
+        }
+      }
+    });
+  });
+
+  //이력서만들기 => 경력
+  router.post('/resume/create/career', (req, res) => {
+    const requestData = req.body;
+    db.query('update resume set past_work = ? where nickname = ?', [requestData.career, requestData.nickname], (err, results) => {
+      if(err){
+        console.error('쿼리 실행 오류:', err);
+        res.status(500).send('경력 저장 실패');
+      } else {
+        if(results.affectedRows === 0){
+          res.status(404).send('경력 저장 실패')
+        }
+        else{
+          res.status(200).send('경력 저장 성공');
+        }
+      }
+    });
+  });
+
 
     //최근 지원한 공고 보기
     router.post('/recent', (req, res) => {
