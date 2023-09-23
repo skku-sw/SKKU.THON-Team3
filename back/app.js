@@ -40,7 +40,7 @@ console.log("app.js")
 app.use('/login', require('./routes/login')(db));
 app.use('/board', require('./routes/board')(db));
 app.use('/posts', require('./routes/posts')(db));
-// app.use('/map', require('./routes/map'));
+app.use('/map', require('./routes/map')(db));
 // app.use('/chat', require('./routes/chat'));
 app.use('/myPage', require('./routes/myPage')(db));
 
