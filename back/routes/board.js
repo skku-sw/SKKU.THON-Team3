@@ -5,7 +5,7 @@ module.exports = (db) => {
 
   //게시글 목록
     router.get('/', (req, res) => {
-    db.query('SELECT * FROM board', (err, results) => {
+    db.query('SELECT * FROM board ORDER BY created_at DESC;', (err, results) => {
         if(err){
             console.error('쿼리 실행 오류:', err);
             res.status(500).send('게시글 조회 실패');
