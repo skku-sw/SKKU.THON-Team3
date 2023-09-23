@@ -1,7 +1,7 @@
 # Node.js 환경에서 사용하는 .gitignore 예제
 
 # 디렉터리
-node_modules/
+/node_modules/
 dist/
 
 # 환경 파일 (예: .env)
