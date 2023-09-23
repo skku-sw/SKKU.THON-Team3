@@ -15,7 +15,11 @@ import MainScreen from './screens/MainScreen';
 import DetailScreen from './screens/Main/DetailScreen';
 import MyPageScreen from './screens/Main/MyPageScreen';
 import ResumeScreen from './screens/ResumeScreen';
+<<<<<<< HEAD
 import ResumeScreen2 from './screens/ResumeScreen2';
+=======
+import CommentScreen from "./screens/Main/CommentScreen"
+>>>>>>> 2e1d8eea305e522b279eda66325db39ecf5658d5
 export default function App() {
   const [isFontLoaded, setIsFontLoaded] = useState(false);
   useEffect(() => {
@@ -56,8 +60,12 @@ export default function App() {
         <Stack.Screen name="DetailScreen" component={DetailScreen} />
         <Stack.Screen name="FilterScreen" component={FilterScreen} />
       <Stack.Screen name="ResumeScreen" component={ResumeScreen} />
+<<<<<<< HEAD
       <Stack.Screen name="ResumeScreen2" component ={ResumeScreen2}/>
 
+=======
+      <Stack.Screen name="Comment" component={CommentScreen}/>
+>>>>>>> 2e1d8eea305e522b279eda66325db39ecf5658d5
     </Stack.Navigator>
   </NavigationContainer>
   );
