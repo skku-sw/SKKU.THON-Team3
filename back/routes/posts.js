@@ -2,6 +2,55 @@ const express = require('express');
 const router = express.Router();
 
 module.exports = (db) => {
+  // POST 요청 처리 (북마크 추가)
+  router.post('/bookmark/:postId', (req, res) => {
+    const postId = req.params.postId;
+    const userNickname = req.body.userNickname;
+    const createdAt = new Date(); // 현재 시각 얻기
+
+    // 이미 북마크가 추가되어 있는지 확인
+    const checkBookmarkQuery = 'SELECT * FROM bookmark WHERE post_id = ? AND user_nickname = ?';
+    db.query(checkBookmarkQuery, [postId, userNickname], (err, results) => {
+      if (err) {
+        console.error('쿼리 실행 오류:', err);
+        res.status(500).send('데이터베이스 오류');
+      } else {
+        if (results.length === 0) {
+          // 북마크 추가
+          const insertBookmarkQuery = 'INSERT INTO bookmark (post_id, user_nickname, created_at) VALUES (?, ?, ?)';
+          db.query(insertBookmarkQuery, [postId, userNickname, createdAt], (err, results) => {
+            if (err) {
+              console.error('쿼리 실행 오류:', err);
+              res.status(500).send('데이터베이스 오류');
+            } else {
+              res.status(200).send('북마크가 추가되었습니다.');
+            }
+          });
+        } else {
+          // 이미 북마크가 추가되어 있음
+          res.status(400).send('이미 북마크가 추가되어 있습니다.');
+        }
+      }
+    });
+  });
+
+  // DELETE 요청 처리 (북마크 제거)
+  router.delete('/bookmark/:postId', (req, res) => {
+    const postId = req.params.postId;
+    const userNickname = req.body.userNickname;
+
+    // 북마크 제거
+    const deleteBookmarkQuery = 'DELETE FROM bookmark WHERE post_id = ? AND user_nickname = ?';
+    db.query(deleteBookmarkQuery, [postId, userNickname], (err, results) => {
+      if (err) {
+        console.error('쿼리 실행 오류:', err);
+        res.status(500).send('데이터베이스 오류');
+      } else {
+        res.status(200).send('북마크가 제거되었습니다.');
+      }
+    });
+  });
+
   router.get('/search', (req, res) => {
     const searchTerm = req.query.searchTerm; // 검색어를 쿼리 매개변수로 받아옴
 
