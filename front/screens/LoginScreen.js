@@ -1,20 +1,40 @@
 import React , {useState, useEffect}from 'react';
 import {Text, View, Button, Image, TouchableOpacity } from 'react-native';
 import { ButtonContainer, InputContainer, InputTextInput, InputTitleText, LargeText, LoginBelowContainer, LoginBelowImageContainer, LoginSubTitleText, LoginTitleContainer, LoginTitleText, MainContainer, NextSignUpContainer, SmallText, TestView, WhiteButtonText } from '../components/styles';
+import axios from 'axios'; // Axios를 import합니다.
 
-
-const LoginScreen = ({navigation}) => {
+const LoginScreen = ({ navigation }) => {
     const [userId, setUserId] = useState('');
     const [userPassword, setUserPassword] = useState('');
-    const handleLogin = () => {
-        // 여기에서 로그인 로직을 구현합니다.
-        // userId와 userPassword를 사용하여 로그인을 시도하고,
-        // 성공하면 다음 화면으로 이동하도록 작업할 수 있습니다.
-        // 로그인 성공 시에는 navigation.navigate('다음 화면 이름')을 사용하여 다음 화면으로 이동합니다.
-        console.log(userId);
-        console.log(userPassword);
-        navigation.navigate("SplashScreen");
-      };
+  
+    const handleLogin = async () => {
+      try {
+        const response = await axios.post('http://localhost:3000/login', {
+          nickname: userId,
+          password: userPassword,
+        });
+  
+        if (response.status === 200) {
+          // 로그인 성공
+          if (response.data === '로그인 성공') {
+            navigation.navigate("SplashScreen");
+          } else {
+            // 서버 응답이 '로그인 성공'이 아닌 경우에 대한 처리
+            ToastAndroid.show('서버 응답 오류', ToastAndroid.SHORT);
+          }
+        } else {
+          // 로그인 실패
+          if (response.data === '로그인 실패') {
+            ToastAndroid.show('로그인 실패', ToastAndroid.SHORT);
+          } else {
+            // 서버 응답이 '로그인 실패'가 아닌 경우에 대한 처리
+            ToastAndroid.show('서버 응답 오류', ToastAndroid.SHORT);
+          }
+        }
+      } catch (error) {
+        console.error('로그인 요청 중 오류 발생:', error);
+      }
+    };
 
     const handleSignUp = () => {
         navigation.navigate("SignUpScreen");
