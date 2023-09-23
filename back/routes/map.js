@@ -37,7 +37,7 @@ module.exports = (db) => {
   //add post
   router.post('/post/add', (req, res) => {
     var requestBody = req.body;
-    db.query(`INSERT INTO posts (agency ,title, content, tag, period, num_recruit, num_applicants, working_hours, salary, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, now())`, [requestBody.agency, requestBody.title, requestBody.content, requestBody.tag, requestBody.period, requestBody.num_recruit, requestBody.num_applicants, requestBody.working_hours, requestBody.salary], (err, results) => {
+    db.query(`INSERT INTO posts (agency ,title, content, tag, period, num_recruit, region, num_applicants, working_hours, salary, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?, now())`, [requestBody.agency, requestBody.title, requestBody.content, requestBody.tag, requestBody.period, requestBody.num_recruit, requestBody.region, requestBody.num_applicants, requestBody.working_hours, requestBody.salary], (err, results) => {
       if(err){
         console.error('쿼리 실행 오류:', err);
         res.status(500).send('게시글 추가 실패');
