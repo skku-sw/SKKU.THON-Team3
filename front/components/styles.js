@@ -13,10 +13,41 @@ export const Colors = {
     black: "#000001",
 };
 const { primary,secondary,tertiary,darkLight,brand,green,red,black} = Colors;
+
 export const MainContainer = styled.View`
     flex : 1;
     align-items: center;
     background-color: ${red};
+    ;
     
-`
+   `
+
+   export const ButtonStyled = styled.TouchableOpacity`
+     background-color: ${brand};
+     padding: 10px 20px;
+     border-radius: 5px;
+   `;
+   
+   export const ButtonText = styled.Text`
+     color: ${black};
+     font-size: 16px;
+     text-align: left;
+   `;
+   
+   
+
+   export const ImageContainer = styled.View`
+     width: 150px;
+     height: 150px;
+     border-radius: 75px;
+     justify-content: center;
+     align-items: center;
+   `;
+   
+   export const ImageStyled = styled.Image`
+     width: 24px;
+     height: 24px;
+     border-radius: 50px;
+   `;
+   
 
